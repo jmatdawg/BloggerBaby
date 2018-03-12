@@ -5,6 +5,7 @@ import AllBlogs from './AllBlogs';
 import blog from '../components/blog';
 import InputBlog from './InputBlog';
 import BlogById from '../components/BlogById';
+import Donate from '../components/donate';
 
 
 class App extends Component {
@@ -18,8 +19,8 @@ class App extends Component {
                         <Route exact path="/blogs" component={ AllBlogs } />
                         <Route exact path="/add" component={ InputBlog }/>
                         <Route exact path="/blogs/:id" component={ BlogById }/>
+                        <Route path="/donate" component={ Donate } />
                     </Switch>
-                     
                 </Fragment>
             </Router>
         )
