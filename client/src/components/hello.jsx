@@ -7,13 +7,13 @@ function HelloWorld(props) {
     return (
         <Fragment>
             <div className="head">
-                <div className="d-flex justify-content-around">
-                    <p><Link to="/blogs">Check Out the Blogs!</Link></p>
-                    <p><Link to="/add">Add Some New Content!</Link></p>
-                </div>
+                
                 <span>
-                    <h1 className="display-1 mx-auto d-block p-2 bg-primary text-center text-white">
-                    <kbd>Welcome to BloggerBaby!</kbd></h1>
+                    <div className="display-1 mx-auto d-block p-2 bg-light text-center ">
+                        <kbd className="text-white">Welcome to BloggerBaby!</kbd>
+                        <p className="lead mt-2"> Once you go <strong><em>Baby</em></strong>, you'll never go Back. </p>
+                    </div>
+                    
                 </span>
             </div>
         

@@ -8,9 +8,14 @@
     position: absolute;
     top: 50%;
   }
+  
   body {
     text-align: center;
     padding: 2em;
+    background-image: url("./bluelips.jpg");
+    /* background-repeat: repeat-y; */
+    background-size: 100px 100 px;
+    
   }
   
   .Checkout {

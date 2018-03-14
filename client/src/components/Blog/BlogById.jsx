@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react'
-import GetOne from '../components/GetOne';
+import GetOne from './GetOne';
 
 class BlogById extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class BlogById extends Component {
             res.sendStatus(400);
         })
 
-        this.props.history.push("/blogs");
+        this.props.history.push("/blogs/");
     }
 
     componentDidMount() {
@@ -33,9 +33,10 @@ class BlogById extends Component {
         return (
             <div>
                 <GetOne blogs={ this.state.one }/>
-                <button onClick={ (event) => {this.onBtnClick(event)} }>
+                <button className="btn btn-sm btn-primary" onClick={ (event) => {this.onBtnClick(event)} }>
                     LET IT GO, BABY!
                 </button>
+                
             </div>
         );
     }

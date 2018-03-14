@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import AddBlog from '../components/AddBlog';
+import AddBlog from '../components/Blog/AddBlog';
 
 class InputBlog extends Component {
 

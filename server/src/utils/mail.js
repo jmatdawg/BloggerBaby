@@ -9,6 +9,10 @@ function sendEmail(to, from, subject, content) {
         from,
         to,
         subject,
-        html
-    }
+        html: content
+    };
+
+    return mailgun.messages().send(data);
 }
+
+export { sendEmail };

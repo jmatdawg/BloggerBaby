@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import GetBlogs from '../components/GetBlogs';
+import GetBlogs from '../components/Blog/GetBlogs';
 
 class AllBlogs extends Component {
     
