@@ -5,8 +5,12 @@ import AllBlogs from './AllBlogs';
 import blog from '../components/Blog/blog';
 import InputBlog from './InputBlog';
 import BlogById from '../components/Blog/BlogById';
-import Donate from '../components/Mailgun/donate';
-import Contact from '../components/Stripe/contact';
+import Donate from '../components/Stripe/donate';
+import Contact from '../components/Mailgun/contact';
+import PrivateRoute from '../components/auth/privateRoute';
+import Login from '../components/auth/login';
+import Logout from '../components/auth/logout';
+import AuthButton from '../components/auth/authButton';
 
 
 class App extends Component {
@@ -21,14 +25,17 @@ class App extends Component {
                     <p><Link to="/add" className="text-light lead">Add Some New Content!</Link></p>
                     <Link to="/contact" className="text-light lead"> Slide In Our DMs!</Link>
                     <Link to="/donate" className="text-light lead"> Donate </Link>
+                    <AuthButton />
                 </div>
                     <Switch>
                         <Route exact path="/" component={ HelloWorld } />
-                        <Route exact path="/blogs" component={ AllBlogs } />
+                        <PrivateRoute exact path="/blogs" component={ AllBlogs } />
                         <Route exact path="/add" component={ InputBlog }/>
                         <Route exact path="/blogs/:id" component={ BlogById }/>
                         <Route exact path="/donate" component={ Donate } />
                         <Route exact path="/contact" component={ Contact }/>
+                        <Route path="/login" component={Login} />
+                        <Route path="/logout" component={Logout} />
                     </Switch>
                 </Fragment>
             </Router>

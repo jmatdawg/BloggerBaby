@@ -43,7 +43,7 @@ class InputBlog extends Component {
         .then(res => res.json())
         .catch((error) => {
             console.error('Error:', error)
-            res.sendStatus(400);
+
         })
 
         this.props.history.push("/blogs"); //will go to the BlogList screen after each new blg is posted

@@ -21,3 +21,4 @@ function destroy(id) {
 }
 
 export { all, one, insert, update, destroy };
+// Authorization: `${baseService.getAutToken()}`

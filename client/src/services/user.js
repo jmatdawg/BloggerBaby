@@ -33,6 +33,7 @@ function login(email, password) {
         if (response.ok) {
             return response.json()
             .then((jsonResponse) => {
+                console.log('i m setting the auth token', jsonResponse);
                 baseService.setAuthToken(jsonResponse.token);
                 loggedIn = true;
             });

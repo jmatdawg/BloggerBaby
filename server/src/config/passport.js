@@ -5,28 +5,27 @@ import Table from '../table';
 import { encode, decode } from '../utils/tokens';
 
 let usersTable = new Table('users');
-let tokensTable = new Table('Tokens')
+let tokensTable = new Table('Tokens');
 
 function configurePassport(app) {
     passport.use(new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
-        session: false
+        session: false,
     }, (email, password, done) => {
-        //this id a "gap"
         usersTable.find({ email })
         .then((results) => results[0])
-        .then((result) => {
+        .then((user) => {
             if (user && user.password && user.password === password) {
                 tokensTable.insert({
                     userid: user.id
                 })
                 .then((idObj) => encode(idObj.id))
-                .then((tokenValue) => {
-                    return done(null, { token: tokenValue });
+                .then((token) => {
+                    return done(null, { token });
                 });
             } else {
-                return done(null, false, {message: 'Invalid Login'});
+                return done(null, false, { message: 'Invalid credentials' });
             }
         }).catch((err) => {
             return done(err);
@@ -36,7 +35,7 @@ function configurePassport(app) {
     passport.use(new BearerStrategy((token, done) => {
         let tokenId = decode(token);
         if (!tokenId) {
-            return done(null, false, { message: 'Invalid Token' });
+            return done(null, false, { message: 'Invalid token' });
         }
         tokensTable.getOne(tokenId)
         .then((tokenRecord) => {
@@ -44,14 +43,14 @@ function configurePassport(app) {
         }).then((user) => {
             if (user) {
                 delete user.password;
-                return done(null, user); //after this, req.user is SET behind the scenes
+                return done(null, user);
             } else {
-                return done(null, false, { message: 'Invalid Token'});
+                return done(null, false, { message: 'Invalid token' });
             }
         }).catch((err) => {
             return done(err);
         });
-    }));
+    }))
 
     app.use(passport.initialize());
 }

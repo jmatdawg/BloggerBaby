@@ -25,7 +25,7 @@ function AddBlog(props) {
                         </textarea>
                     </div>
                 </form>
-                <button className="btn btn-sm btn-primary"onClick={props.newBlogSubmit}> Lay it on me!</button>
+                <button className="btn btn-sm btn-primary" onClick={props.newBlogSubmit}> Lay it on me!</button>
             </div>
         </div>
     )
